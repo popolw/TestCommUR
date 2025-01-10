@@ -1025,11 +1025,11 @@ namespace UR
 		{
 			int offset = 0;
 			byte[] payload = new byte[MessageLen + SourceLen + 3];
-			Buffer.BlockCopy(BitConverter.GetBytes(MessageLen), 0, payload, 0, 1);               offset = 1;
+			Buffer.BlockCopy(BitConverter.GetBytes((short)MessageLen), 0, payload, 0, 1);               offset = 1;
 			Buffer.BlockCopy(Encoding.ASCII.GetBytes(Message), 0, payload, offset, MessageLen);  offset += MessageLen;
-			Buffer.BlockCopy(BitConverter.GetBytes(SourceLen), 0, payload, offset, 1);           offset += 1;
+			Buffer.BlockCopy(BitConverter.GetBytes((short)SourceLen), 0, payload, offset, 1);           offset += 1;
 			Buffer.BlockCopy(Encoding.ASCII.GetBytes(Source), 0, payload, offset, SourceLen);    offset += SourceLen;
-			Buffer.BlockCopy(BitConverter.GetBytes(WarningLevel), 0, payload, offset, 1);
+			Buffer.BlockCopy(BitConverter.GetBytes((short)WarningLevel), 0, payload, offset, 1);
 			return payload;
 		}
 
